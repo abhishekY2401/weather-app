@@ -1,12 +1,51 @@
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #616196;
+  font-family: "Poppins", sans-serif;
+  background-color: #282828;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  border: none;
+  border-radius: 20px;
+  width: 24vw;
+  padding: 8px 10px 8px 15px;
+  font-size: 1rem;
+  color: #282828;
+  font-family: "Poppins", sans-serif;
+  margin: 2.5em auto;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  padding-left: 4px;
+}
+
+button {
+  margin-left: 2rem;
+}
+
+.weather {
+  display: flex;
+  align-items: baseline;
+  padding: 10px;
+  background-color: #4b3ca7;
+  border-radius: 20px;
+}
+
+.weather p {
+  color: white;
+}
+
+.fa-map-marker-alt {
+  color: white;
+  padding: 10px;
 }
