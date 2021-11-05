@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import winter from "./assets/winter-bg.jpg";
 
 function App() {
   // show location, day date and time,  weather in degrees celsius, type of weather, parameters of weather
@@ -28,14 +29,37 @@ function App() {
           onChange={(e) => setCity(e.target.value)}
           value={city}
           onKeyPress={getWeather}
+          className="input"
         />
       </main>
       <div className="weather">
-        <i className="fas fa-map-marker-alt"></i>
         <p className="location">
-          {weatherData && weatherData.location && weatherData.location.name},{" "}
-          {weatherData && weatherData.location && weatherData.location.country}
+          {weatherData && <i className="fas fa-map-marker-alt"></i>}
+          {weatherData && weatherData.location && weatherData.location.name}
         </p>
+      </div>
+      <div className="type">
+        <img
+          src={
+            weatherData &&
+            weatherData.current &&
+            weatherData.current.condition &&
+            weatherData.current.condition.icon
+          }
+          alt="icon"
+        />
+        <p>
+          {weatherData &&
+            weatherData.current &&
+            weatherData.current.condition &&
+            weatherData.current.condition.text}
+        </p>
+      </div>
+      <div className="temp">
+        <h2>
+          {weatherData && weatherData.current && weatherData.current.temp_c}{" "}
+          &#8451;
+        </h2>
       </div>
     </div>
   );

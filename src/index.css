@@ -1,18 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: rgb(48, 177, 59);
+}
+
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #282828;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+}
+
+.bg-image {
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 72vh;
+}
+
+.img {
+  width: 100vw;
 }
 
 input {
   border: none;
   border-radius: 20px;
+  background-color: antiquewhite;
   width: 24vw;
   padding: 8px 10px 8px 15px;
   font-size: 1rem;
@@ -37,15 +52,37 @@ button {
   display: flex;
   align-items: baseline;
   padding: 10px;
-  background-color: #4b3ca7;
   border-radius: 20px;
 }
 
 .weather p {
-  color: white;
+  color: #202020;
+  font-size: 1.6em;
 }
 
 .fa-map-marker-alt {
-  color: white;
-  padding: 10px;
+  color: #202020;
+  padding: 12px;
+  font-size: 2.2rem;
+}
+
+.type {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 1rem 1rem auto;
+}
+
+.type p {
+  margin: 0.8rem;
+}
+
+.temp {
+  backdrop-filter: blur(2rem);
+}
+
+.temp h2 {
+  padding: 3rem;
+  background-color: rgb(229, 229, 233);
+  text-align: center;
 }
