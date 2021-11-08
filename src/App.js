@@ -10,7 +10,9 @@ function App() {
 
   const getWeather = (event) => {
     if (event.key === "Enter") {
-      fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKeyWeather}&q=${city}`)
+      fetch(
+        `http://api.weatherapi.com/v1/current.json?key=${apiKeyWeather}&q=${city}`
+      )
         .then((response) => response.json())
         .then((data) => {
           setWeatherData(data);
@@ -21,26 +23,27 @@ function App() {
   };
 
   const getImage = () => {
-    fetch(`https://api.unsplash.com/search/photos/?query=${city}&client_id=${apiKeyImage}`)
-    .then((response) => response.json())
-    .then((data) => {
-      setImage(data);
-    });
-  }
+    fetch(
+      `https://api.unsplash.com/search/photos/?query=${city}&client_id=${apiKeyImage}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setImage(data);
+      });
+  };
 
   return (
     <div className="container">
-      <div className="bg-img">
-        <img 
+      <img
         src={
-          image && 
-          image.results[1] && 
-          image.results[1].links && 
-          image.results[1].links.download
-        } 
-          className="bg-img"
-          alt="bg"/>
-      </div>
+          image &&
+          image.results[2] &&
+          image.results[2].links &&
+          image.results[2].links.download
+        }
+        className="bg-img"
+        alt="bg"
+      />
       <main>
         <input
           type="search"
@@ -56,25 +59,24 @@ function App() {
           {weatherData && <i className="fas fa-map-marker-alt"></i>}
           {weatherData && weatherData.location && weatherData.location.name}
         </p>
-      </div>
-      <div className="type">
-        <img
-          src={
-            weatherData &&
-            weatherData.current &&
-            weatherData.current.condition &&
-            weatherData.current.condition.icon
-          }
-          alt="icon"
-        />
-        <p>
-          {weatherData &&
-            weatherData.current &&
-            weatherData.current.condition &&
-            weatherData.current.condition.text}
-        </p>
-      </div>
-      <div className="temp">
+        <div className="type">
+          <img
+            src={
+              weatherData &&
+              weatherData.current &&
+              weatherData.current.condition &&
+              weatherData.current.condition.icon
+            }
+            alt="icon"
+          />
+          <p>
+            {weatherData &&
+              weatherData.current &&
+              weatherData.current.condition &&
+              weatherData.current.condition.text}
+          </p>
+        </div>
+
         <h2>
           {weatherData && weatherData.current && weatherData.current.temp_c}{" "}
           &#8451;
