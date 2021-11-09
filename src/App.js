@@ -54,11 +54,22 @@ function App() {
           className="input"
         />
       </main>
+      <div className="time">
+        <p>
+          {weatherData &&
+            weatherData.location &&
+            weatherData.location.localtime}
+        </p>
+      </div>
       <div className="weather">
         <p className="location">
           {weatherData && <i className="fas fa-map-marker-alt"></i>}
           {weatherData && weatherData.location && weatherData.location.name}
         </p>
+        <h2>
+          {weatherData && weatherData.current && weatherData.current.temp_c}{" "}
+          &#8451;
+        </h2>
         <div className="type">
           <img
             src={
@@ -76,11 +87,6 @@ function App() {
               weatherData.current.condition.text}
           </p>
         </div>
-
-        <h2>
-          {weatherData && weatherData.current && weatherData.current.temp_c}{" "}
-          &#8451;
-        </h2>
       </div>
     </div>
   );
