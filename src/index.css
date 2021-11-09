@@ -12,13 +12,12 @@ body {
 .container {
   margin: 0;
   padding: 0;
-  position: relative;
+  position: absolute;
   width: 100vw;
 }
 
 .bg-img {
   position: fixed;
-  background-attachment: fixed;
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -29,8 +28,8 @@ main {
   margin: 1rem;
 }
 
-main > input {
-  border: 2px solid #282828;
+input {
+  border: none;
   border-radius: 20px;
   background-color: white;
   width: 24vw;
@@ -38,7 +37,7 @@ main > input {
   font-size: 1rem;
   color: #282828;
   font-family: "Poppins", sans-serif;
-  margin: 2.5em auto;
+  margin: 3rem auto;
   position: relative;
 }
 
@@ -50,15 +49,32 @@ main > input::placeholder {
   padding-left: 4px;
 }
 
+.time {
+  transform: translate(40vw, 10%);
+  background-color: rgb(1, 4, 17);
+  position: absolute;
+  border-radius: 25px;
+  z-index: 100;
+  width: 22vw;
+  height: 40vh;
+}
+
+.time p {
+  text-align: center;
+  padding: 4rem;
+  font-size: 2em;
+}
+
 .weather {
-  margin: 2rem;
+  transform: translate(70vw, 10%);
   position: relative;
   align-items: center;
   padding: 10px;
-  border-radius: 20px;
-  background-color: rgba(214, 205, 205, 0.5);
-  z-index: 20;
-  width: 25vw;
+  border-radius: 25px;
+  background-image: linear-gradient(rgb(66, 83, 156), rgb(29, 65, 223));
+  z-index: 100;
+  width: 22vw;
+  height: 40vh;
 }
 
 .weather p {
@@ -71,15 +87,15 @@ main > input::placeholder {
 }
 
 .type {
-  display: flex;
+  display: block;
   align-items: center;
-  font-size: 1rem;
 }
 
 .type p {
-  margin: 0.6rem;
+  margin-left: 1rem;
+  font-size: 1.2rem;
 }
 
-.type h2 {
-  margin: 1rem;
+.weather h2 {
+  margin: 1.25rem;
 }
