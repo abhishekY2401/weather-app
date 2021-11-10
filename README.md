@@ -11,5 +11,6 @@
 1. Fork the repository.
 2. Clone the repository in your local environment. <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">Refer this</a>
 3. Make sure to work on different branch.
+4. After making valuable contributions open a pull request. <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Follow this to make a PR</a> 
 
 ### Any Contributions to this project is welcome 🙇‍♂️
