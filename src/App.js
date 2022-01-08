@@ -14,7 +14,7 @@ function App() {
   const getWeather = (event) => {
     if (event.key === "Enter") {
       fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${apiKeyWeather}&q=${city}`
+        `https://api.weatherapi.com/v1/current.json?key=${apiKeyWeather}&q=${city}`
       )
         .then(response => {
           console.log(response)
