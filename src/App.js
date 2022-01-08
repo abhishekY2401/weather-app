@@ -1,25 +1,45 @@
 import React, { useState } from "react";
+import "./index.css";
+import Error404 from "./Components/Error404"
 
 function App() {
   // show location, day date and time,  weather in degrees celsius, type of weather, parameters of weather
   const apiKeyWeather = "85a0f9c6e34c4e619b5124543212610";
   const apiKeyImage = "FUvogg6bXQSTCVHO4w48gWpHVLveHYbiUG8RLIHrLUs";
-  const [weatherData, setWeatherData] = useState([{}]);
+  const [weatherData, setWeatherData] = useState({});
   const [image, setImage] = useState("");
   const [city, setCity] = useState("");
+  const [error, setError] = useState("");
 
   const getWeather = (event) => {
     if (event.key === "Enter") {
       fetch(
         `http://api.weatherapi.com/v1/current.json?key=${apiKeyWeather}&q=${city}`
       )
-        .then((response) => response.json())
-        .then((data) => {
-          setWeatherData(data);
-          getImage();
-        });
+        .then(response => {
+          console.log(response)
+
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("No Matching Location Found!");
+          }
+        })
+        .then(data => {
+          setWeatherData(data)
+          getImage()
+          console.log(data)
+          setError("");
+        })
+        .catch(err => {
+          setError(err)
+          console.log(err.length);
+          setWeatherData("");
+          setImage("");
+        })
       setCity("");
-    }
+
+    };
   };
 
   const getImage = () => {
@@ -34,6 +54,7 @@ function App() {
 
   return (
     <div className="container">
+      {image && 
       <img
         src={
           image &&
@@ -43,7 +64,7 @@ function App() {
         }
         className="bg-img"
         alt="bg"
-      />
+      />}
       <main>
         <input
           type="search"
@@ -54,14 +75,25 @@ function App() {
           className="input"
         />
       </main>
-      <div className="time">
+
+      {error && 
+      (<div> 
+        <Error404 />
+      </div>)
+      } 
+
+      {Object.keys(weatherData).length > 0 && 
+      (<div className="time">
         <p>
           {weatherData &&
             weatherData.location &&
             weatherData.location.localtime}
         </p>
-      </div>
-      <div className="weather">
+      </div>)
+      }
+
+      {Object.keys(weatherData).length > 0 && 
+      (<div className="weather">
         <p className="location">
           {weatherData && <i className="fas fa-map-marker-alt"></i>}
           {weatherData && weatherData.location && weatherData.location.name}
@@ -87,7 +119,8 @@ function App() {
               weatherData.current.condition.text}
           </p>
         </div>
-      </div>
+      </div>)
+      }
     </div>
   );
 }
