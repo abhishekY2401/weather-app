@@ -108,7 +108,7 @@ main > input::placeholder {
   background-image: linear-gradient(rgb(66 68 156), rgb(223 29 29 / 86%));;
   z-index: 100;
   width: 20vw;
-  height: 100vh;
+  height: 40vh;
 }
 
 .weather p {
