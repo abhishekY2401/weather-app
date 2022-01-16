@@ -5,9 +5,9 @@ import Error404 from "./Components/Error404"
 function App() {
   // show location, day date and time,  weather in degrees celsius, type of weather, parameters of weather
   const apiKeyWeather = "85a0f9c6e34c4e619b5124543212610";
-  const apiKeyImage = "FUvogg6bXQSTCVHO4w48gWpHVLveHYbiUG8RLIHrLUs";
+  // const apiKeyImage = "FUvogg6bXQSTCVHO4w48gWpHVLveHYbiUG8RLIHrLUs";
   const [weatherData, setWeatherData] = useState({});
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
 
@@ -35,7 +35,7 @@ function App() {
           setError(err)
           console.log(err.length);
           setWeatherData("");
-          setImage("");
+          // setImage("");
         })
       setCity("");
 
