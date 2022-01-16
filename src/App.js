@@ -75,6 +75,7 @@ function App() {
         </main>
       </div>
           
+      {(error || weatherData) && 
       <div class="weat-data">
         {/* {image && 
         <img
@@ -133,7 +134,7 @@ function App() {
           </div>
         </div>)
         }
-      </div>
+      </div>}
     </div>
   );
 }
