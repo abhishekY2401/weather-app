@@ -27,7 +27,7 @@ function App() {
         })
         .then(data => {
           setWeatherData(data)
-          getImage()
+          // getImage()
           console.log(data)
           setError("");
         })
@@ -42,85 +42,98 @@ function App() {
     };
   };
 
-  const getImage = () => {
-    fetch(
-      `https://api.unsplash.com/search/photos/?query=${city}&client_id=${apiKeyImage}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setImage(data);
-      });
-  };
+  // Not fetching images because not required
+  // const getImage = () => {
+  //   fetch(
+  //     `https://api.unsplash.com/search/photos/?query=${city}&client_id=${apiKeyImage}`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setImage(data);
+  //     });
+  // };
 
   return (
-    <div className="container">
-      {image && 
-      <img
-        src={
-          image &&
-          image.results[2] &&
-          image.results[2].links &&
-          image.results[2].links.download
-        }
-        className="bg-img"
-        alt="bg"
-      />}
-      <main>
-        <input
-          type="search"
-          placeholder="Search by city"
-          onChange={(e) => setCity(e.target.value)}
-          value={city}
-          onKeyPress={getWeather}
-          className="input"
-        />
-      </main>
-
-      {error && 
-      (<div> 
-        <Error404 />
-      </div>)
-      } 
-
-      {Object.keys(weatherData).length > 0 && 
-      (<div className="time">
-        <p>
-          {weatherData &&
-            weatherData.location &&
-            weatherData.location.localtime}
-        </p>
-      </div>)
-      }
-
-      {Object.keys(weatherData).length > 0 && 
-      (<div className="weather">
-        <p className="location">
-          {weatherData && <i className="fas fa-map-marker-alt"></i>}
-          {weatherData && weatherData.location && weatherData.location.name}
-        </p>
-        <h2>
-          {weatherData && weatherData.current && weatherData.current.temp_c}{" "}
-          &#8451;
-        </h2>
-        <div className="type">
-          <img
-            src={
-              weatherData &&
-              weatherData.current &&
-              weatherData.current.condition &&
-              weatherData.current.condition.icon
-            }
-            alt="icon"
+    <div className="main-head">
+      <div className="container">
+        <main>
+          <header className="nav-bar">
+            <nav>
+              <i class="fas fa-cloud"></i>
+              <a href="/" className="heading">WeatherCast</a>
+            </nav>
+          </header>
+          <h2 className="head-2">Get Weather details for your search.</h2>
+          <input
+            type="search"
+            placeholder="Search by city"
+            onChange={(e) => setCity(e.target.value)}
+            value={city}
+            onKeyPress={getWeather}
+            className="input"
           />
+        </main>
+      </div>
+          
+      <div class="weat-data">
+        {/* {image && 
+        <img
+          src={
+            image &&
+            image.results[2] &&
+            image.results[2].links &&
+            image.results[2].links.download
+          }
+          className="bg-img"
+          alt="bg"
+        />} */}
+
+        {error && 
+          (<div className="err"> 
+            <Error404 />
+          </div>)
+        }  
+
+        {Object.keys(weatherData).length > 0 && 
+        (<div className="time">
           <p>
             {weatherData &&
-              weatherData.current &&
-              weatherData.current.condition &&
-              weatherData.current.condition.text}
+              weatherData.location &&
+              weatherData.location.localtime}
           </p>
-        </div>
-      </div>)
-      }
+        </div>)
+        }
+
+        {Object.keys(weatherData).length > 0 && 
+        (<div className="weather">
+          <p className="location">
+            {weatherData && <i className="fas fa-map-marker-alt"></i>}
+            {weatherData && weatherData.location && weatherData.location.name}
+          </p>
+          <h2>
+            {weatherData && weatherData.current && weatherData.current.temp_c}{" "}
+            &#8451;
+          </h2>
+          <div className="type">
+            <img
+              src={
+                weatherData &&
+                weatherData.current &&
+                weatherData.current.condition &&
+                weatherData.current.condition.icon
+              }
+              alt="icon"
+            />
+            <p>
+              {weatherData &&
+                weatherData.current &&
+                weatherData.current.condition &&
+                weatherData.current.condition.text}
+            </p>
+          </div>
+        </div>)
+        }
+      </div>
     </div>
   );
 }
